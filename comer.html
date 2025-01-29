@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>来院確認</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .status {
+      font-weight: bold;
+    }
+    .arrived {
+      color: gray;
+      background-color: #f0f0f0;
+    }
+    .name {
+      cursor: pointer;
+      color: blue;
+      text-decoration: underline;
+    }
+    .group {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>来院者リスト</h1>
+
+  <div class="group">あ行</div>
+  <table>
+    <tr>
+      <th>名前</th>
+      <th>状態</th>
+    </tr>
+    <tr>
+      <td class="name" onclick="changeStatus(this)">青木 大輔</td>
+      <td class="status">未</td>
+    </tr>
+  </table>
+
+  <div class="group">か行</div>
+  <table>
+    <tr>
+      <th>名前</th>
+      <th>状態</th>
+    </tr>
+    <tr>
+      <td class="name" onclick="changeStatus(this)">加藤 美香</td>
+      <td class="status">未</td>
+    </tr>
+    <tr>
+      <td class="name" onclick="changeStatus(this)">川村 直樹</td>
+      <td class="status">未</td>
+    </tr>
+  </table>
+
+  <div class="group">さ行</div>
+  <table>
+    <tr>
+      <th>名前</th>
+      <th>状態</th>
+    </tr>
+    <tr>
+      <td class="name" onclick="changeStatus(this)">佐藤 次郎</td>
+      <td class="status">未</td>
+    </tr>
+    <tr>
+      <td class="name" onclick="changeStatus(this)">鈴木 花子</td>
+      <td class="status">未</td>
+    </tr>
+  </table>
+
+  <script>
+    function changeStatus(element) {
+      var statusElement = element.nextElementSibling;
+      if (statusElement.textContent === "未") {
+        statusElement.textContent = "来院";
+        statusElement.classList.add('arrived');
+        element.classList.add('arrived'); // ここで氏名にもarrivedクラスを追加
+      } else {
+        statusElement.textContent = "未";
+        statusElement.classList.remove('arrived');
+        element.classList.remove('arrived'); // ここで氏名からarrivedクラスを削除
+      }
+    }
+  </script>
+
+</body>
+</html>
