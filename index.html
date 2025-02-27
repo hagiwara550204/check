@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最大化＆閉じる防止ページ</title>
+    <script>
+        // ウィンドウを開くときに最大化
+        function maximizeWindow() {
+            window.moveTo(0, 0);
+            window.resizeTo(screen.availWidth, screen.availHeight);
+        }
+
+        // ページを閉じようとするともう1画面
+        window.onbeforeunload = function(event) {
+            return "このページを離れますか？";
+        };
+
+        // ページ読み込み時に最大化
+        window.onload = maximizeWindow;
+    </script>
+</head>
+<body>
+    <h1>このページは最大化され、閉じると警告が出ます</h1>
+    <p>×ボタンを押すと警告が表示されます。</p>
+</body>
+</html>
