@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>警告が増えるページ</title>
+    <title>無限増殖する例(警告用ページ)</title>
     <script>
-        document.addEventListener("mousemove", function() {
-            alert("警告！マウスを動かしました！");
+        document.addEventListener("click", function() {
+            window.open(window.location.href, "_blank");
         });
     </script>
 </head>
 <body>
-    <h1>マウスを動かすと警告が無限に増えます！</h1>
-    <p>※警告を止めるにはページをリロードするか閉じてください。</p>
+    <h1>クリックすると新しいウィンドウが開きます！</h1>
+    <p>※開いたページでもクリックすると無限に増えていきます。</p>
 </body>
 </html>
