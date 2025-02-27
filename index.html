@@ -5,23 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>最大化＆閉じる防止ページ</title>
     <script>
-        // ウィンドウを開くときに最大化
+        // ウィンドウを最大化
         function maximizeWindow() {
             window.moveTo(0, 0);
             window.resizeTo(screen.availWidth, screen.availHeight);
         }
 
-        // ページを閉じようとするともう1画面
-        window.onbeforeunload = function(event) {
-            return "このページを離れますか？";
-        };
+        // ユーザーが何か操作したら閉じる警告を有効化
+        function enableUnloadWarning() {
+            window.onbeforeunload = function(event) {
+                return "このページを離れますか？";
+            };
+            // 一度設定したら、イベントリスナーを削除（不要な呼び出しを防ぐ）
+            document.removeEventListener("click", enableUnloadWarning);
+            document.removeEventListener("keydown", enableUnloadWarning);
+        }
 
-        // ページ読み込み時に最大化
+        // ページが読み込まれたらウィンドウを最大化
         window.onload = maximizeWindow;
+
+        // ユーザーの操作を検知して閉じる警告を有効化
+        document.addEventListener("click", enableUnloadWarning);
+        document.addEventListener("keydown", enableUnloadWarning);
     </script>
 </head>
 <body>
     <h1>このページは最大化され、閉じると警告が出ます</h1>
-    <p>×ボタンを押すと警告が表示されます。</p>
+    <p>どこかをクリックまたはキーを押すと、×ボタンを押したときに警告が出るようになります。</p>
 </body>
 </html>
